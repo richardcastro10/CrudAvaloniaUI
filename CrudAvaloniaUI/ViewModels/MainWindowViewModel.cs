@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace CrudAvaloniaUI.ViewModels
 {
@@ -9,7 +10,7 @@ namespace CrudAvaloniaUI.ViewModels
     {
 
         private ViewModelBase _contentViewModel;
-
+        
         private string? _nome;
         private int _idade;
 
@@ -71,6 +72,7 @@ namespace CrudAvaloniaUI.ViewModels
 
         private string _textoBusca;
 
+
         public string TextoBusca
         {
             get => _textoBusca;
@@ -89,5 +91,8 @@ namespace CrudAvaloniaUI.ViewModels
                 Pessoas.Add(pessoa);
             }
         }
+
+
+
     }
 }
