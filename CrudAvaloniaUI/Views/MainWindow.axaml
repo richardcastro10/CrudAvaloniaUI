@@ -1,0 +1,71 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:CrudAvaloniaUI.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="CrudAvaloniaUI.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="CrudAvaloniaUI">
+
+    <Design.DataContext>
+		<vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<!-- Adiciona o logotipo no centro do topo -->
+		<Image Source="D:\ReactNative\AvaloniaCRUDVerion\AvaloniaCRUDVerion\Imagens\download.png" Width="250" Height="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+
+		<!-- Entrada de dados -->
+		<StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Spacing="10">
+			<!-- Rótulos para identificar os campos -->
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,10">
+				<TextBlock Text="Nome:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+				<TextBox Text="{Binding Nome}" Watermark="Nome" Margin="0,0,0,0" Width="200"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,10">
+				<TextBlock Text="Idade:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+				<TextBox Text="{Binding Idade}" Watermark="Idade" Margin="0,0,0,0" Width="50"/>
+			</StackPanel>
+
+			<!-- Campo de busca -->
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,10">
+				<TextBlock Text="Buscar:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+				<TextBox Text="{Binding TextoBusca}" Watermark="Digite para buscar" Width="150" Margin="0,0,10,0"/>
+				
+			</StackPanel>
+
+			<!-- Botões -->
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,10">
+				<Button Content="Adicionar" Command="{Binding Adicionar}" Margin="0,0,10,0"/>
+				<Button Content="Excluir" Command="{Binding Excluir}" CommandParameter="{Binding SelectedPessoa}" Margin="0,0,10,0"/>
+				<Button Content="Buscar" Command="{Binding Buscar}" Margin="0,0,0,0"/>
+			</StackPanel>
+		</StackPanel>
+
+		<!-- Lista de pessoas -->
+		<ListBox x:Name="listaPessoas" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" BorderThickness="0" Background="Transparent" ItemsSource="{Binding Pessoas}" SelectedItem="{Binding SelectedPessoa}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Nome}" Margin="0,0,0,5"/>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+		<!-- Texto de versão --><!--
+		<TextBlock Text="Version 1.0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,30,0,0"/>-->
+	</Grid>
+
+
+
+
+
+
+</Window>
